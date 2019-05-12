@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         valueLineChart.setShowIndicator(false);
 
+
         arrayList = new ArrayList<>();
         arrayList.add(0f);
         arrayList.add(0f);
@@ -61,12 +62,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshGraph() {
+        int additionalValue = 1;
         valueLineChart.clearChart();
-        valueLineChart.addStandardValue(0.8f);
+        valueLineChart.addStandardValue(additionalValue + .8f);
         ValueLineSeries valueLineSeries = new ValueLineSeries();
         valueLineSeries.setColor(0xFF56B7F1);
         for (float f : arrayList
         ) {
+            f += additionalValue;
             valueLineSeries.addPoint(new ValueLinePoint(String.format(Locale.getDefault(), "%.2f", f), f));
         }
         valueLineChart.addSeries(valueLineSeries);
